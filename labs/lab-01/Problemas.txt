@@ -1,0 +1,5 @@
+Errores
+
+1) Al ejecutar la instriccion git push origin master -f se presenta este error:
+    error: failed to push some refs to 'https://github.com/adanchf94/curso-rest-dotnet-apis'
+    
