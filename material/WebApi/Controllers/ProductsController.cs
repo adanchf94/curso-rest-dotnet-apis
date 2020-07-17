@@ -11,29 +11,45 @@ namespace WebApi.Controllers
     [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
+        private static readonly string[] Products = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Jeans", "T-shirt", "Pants"
         };
 
         private readonly ILogger<ProductsController> _logger;
-            
+
         public ProductsController(ILogger<ProductsController> logger)
         {
             _logger = logger;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public ActionResult<IEnumerable<object>> Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            int i = 0;
+
+            var result = Products.Select(model => new
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+                Name = model,
+                Id = i++
+            });
+
+            return Ok(result);
+
         }
+
+        [HttpGet("{id}")]
+        public object GetById(int id) 
+        {
+            int i = 0;
+            var result = Products.Select(model => new
+            {
+                Name = model,
+                Id = i++
+            }).ToList();
+
+            return result[id];
+        }
+
     }
 }
