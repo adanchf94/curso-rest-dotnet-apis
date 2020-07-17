@@ -1,5 +1,3 @@
-Errores
+Problemas
 
-1) Al ejecutar la instriccion git push origin master -f se presenta este error:
-    error: failed to push some refs to 'https://github.com/adanchf94/curso-rest-dotnet-apis'
-    
+1) Por error sobreescribí el laboratorio 1 con el laboratorio 2.
